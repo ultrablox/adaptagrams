@@ -2,11 +2,6 @@
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MD")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MDd")
 
-add_compile_definitions(LIBAVOID_NO_DLL)
-add_compile_definitions(SVG_OUTPUT)
-add_compile_definitions(LIBAVOID_EXPORTS)
-add_compile_definitions(NDEBUG)
-
 ADD_LIBRARY(avoid STATIC 
   actioninfo.cpp
   connectionpin.cpp
@@ -66,6 +61,7 @@ set(HEADER_FILES
   vpsc.h
 )
 
+target_compile_definitions(avoid PRIVATE LIBAVOID_NO_DLL SVG_OUTPUT LIBAVOID_EXPORTS NDEBUG)
 
 set_target_properties(avoid PROPERTIES PUBLIC_HEADER "${HEADER_FILES}")
 
